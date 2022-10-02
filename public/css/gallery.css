@@ -3,7 +3,7 @@ html, body{
     width: 100%;
 }
 body{
-    background-image: url(../Images/SpaceBackground.jpg);
+    background-image: url(/images/SpaceBackground.jpg);
     background-repeat: no-repeat;
     background-attachment: fixed;
 }
