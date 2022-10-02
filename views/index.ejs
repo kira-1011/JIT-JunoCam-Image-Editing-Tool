@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+    <title>JIT Image Gallery</title>
+    <link rel="stylesheet" href="/css/gallery.css">
+</head>
+<body> 
+    <div id="Title"> 
+         <h1> JIT Image Gallery </h1> 
+         <div class="d-md-flex justify-content-md-end">
+            <a href="/editor" class="btn btn-secondary btn-lg">JIT Image Editor </a>
+        </div>
+    </div>
+
+    <div class="cont" id="blur">
+        <% for(let i = 0; i < 23; i++) { %>
+            <div class="card"> 
+                <div class="card-body">
+                    <a href="/images/junoCamImages/<%=13537 + i%>-ImageSet/ImageSet/<%= metadataJson.metadata[i].FILE_NAME.replace("raw", "mapprojected") %>"> <img class="images" src="/images/junoCamImages/<%=13537 + i%>-ImageSet/ImageSet/<%= metadataJson.metadata[i].FILE_NAME.replace("raw", "mapprojected") %>"></a>
+                    <p class="card-text"><a class="link" onclick="toggle()">PJ45 South Polar Region</a></p>
+                    <a class="btn btn-dark" onclick="toggle(this)" data-metadata='<%=JSON.stringify(metadataJson.metadata[i])%>' data-num=<%=i%>>View Details</a>
+                </div>
+            </div>
+        <% } %>
+    </div>
+
+   
+    <div id="popup">
+        <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" id="metadataBtn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            MetaData
+            </button>
+            <ul class="dropdown-menu dropdown-menu-dark" id="metadata_list">
+            </ul>
+        </div>
+        <img class="container-fluid" id="popup_image" title="MAP-PROJECTED" src="">
+        <div class="btnContainer">
+            <a class="btn btn-danger" id="close"><img src="/icons/close_FILL0_wght400_GRAD0_opsz48.svg" alt="Close" height="30em" width="30em"></a>
+            <a id="downloadImage" class="btn btn-secondary"><img src="/icons/file_download_FILL0_wght400_GRAD0_opsz48.svg" alt="Download-Image" height="30em" width="30em">Images</a>
+            <a id="downloadData" class="btn btn-secondary"><img src="/icons/file_download_FILL0_wght400_GRAD0_opsz48.svg" alt="Download-Data" height="30em" width="30em">Metadata</a>
+        </div>
+        <div id="altImages">
+            <img title="RED">
+            <img title="GREEN">
+            <img title="BLUE">
+        </div>
+    </div>
+    <script defer src="/js/index.js"> </script>
+</body>
+
+</html>

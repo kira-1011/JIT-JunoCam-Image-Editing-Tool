@@ -1,0 +1,16 @@
+{
+  "name": "jit",
+  "version": "1.0.0",
+  "description": "JunoCam Image Processing Tool",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^3.1.8",
+    "express": "^4.18.1",
+    "nodemon": "^2.0.20"
+  }
+}

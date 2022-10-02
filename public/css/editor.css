@@ -1,0 +1,407 @@
+@import url('https://fonts.googleapis.com/css2?family=Staatliches&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'poppins',sans-serif;
+}
+
+body{
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #17202A;
+}
+
+.main{
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.05);
+    overflow: hidden;
+    box-shadow: 0.1px 4px 8px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Tools part */
+
+.Tools{
+    height: 100vh;
+    width: 8%;
+    box-shadow: 0.1px 4px 8px 5px rgba(0, 0, 0, 0.1);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.Tools ul{
+    list-style: none;
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.Tools ul li{
+	padding-left: 10px;
+    /* width: 50%; */
+    height: 60px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: left;
+    flex-direction: column;
+	flex-wrap: wrap;
+    cursor: pointer;
+    transition: 0.4s;
+}
+
+
+.Tools ul .active_option p{
+    opacity: 1;
+    margin-top: 8px;
+}
+
+.Tools ul .active_option i{
+    color: orange;
+}
+
+.Tools ul li i {
+	color: rgba(255, 255, 255, 0.5);
+	margin-top: 10px;
+	font-size: 2em;
+}
+
+.Tools ul li:hover i {
+	color: orange;
+}
+
+.Tools ul li:hover p {
+	opacity: 1;
+	margin-top: 8px;
+}
+
+.Tools ul li p {
+	opacity: 0;
+	font-size: 13px;
+	color: rgba(255, 255, 255, 0.5);
+}
+
+
+/*content part */
+.content {
+	position: relative;
+	width: 90%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	padding: 20px;
+}
+
+.content #logo {
+	position: absolute;
+	top: 10px;
+	right: 60px;
+	width: 6%;
+}
+
+.content #logo1{
+	position: absolute;
+	top: 110px;
+	right: 20px;
+	letter-spacing: 3px;
+	font-family: 'Staatliches', cursive;
+	color: rgba(230, 191, 191, 0.5);
+}
+
+.choose_image {
+	width: 70%;
+	height: 200px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.upload_img_box {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	height: 100%;
+	width: 100%;
+	cursor: pointer;
+	border: 1px dashed rgba(255, 255, 255, 0.5);
+}
+
+p#hint {
+	color: rgba(255, 255, 255, 0.5);
+	font-size: 1.2em;
+}
+
+.upload_img_box i {
+	font-size: 2.2em;
+	color: rgba(255, 255, 255, 0.5);
+}
+
+#selectedImage {
+	display: none;
+}
+
+
+/*canvas */
+#image_canvas {
+	display: none;
+	/* overflow: hidden; */
+}
+
+
+/*image holder part*/
+.image_holder {
+	/* display: flex; */
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	display: none;
+	justify-content: center;
+	align-items: center;
+	transform-origin: center;
+	overflow: hidden;
+	width: 100%;
+	height: 100%;
+	/* object-fit: contain; */
+}
+
+
+.image_holder #image {
+	/* transform-origin: center; */
+	width: 100%;
+	height: 80%;
+	object-fit: contain;
+	/* border-radius: 15px; */
+}
+
+#remove_img_btn {
+	position: absolute;
+	display: none;
+	top: 4%;
+	right: 20%;
+	/* left: 10%; */
+	outline: none;
+	border: none;
+	cursor: pointer;
+	color: orange;
+	font-size: 1.8em;
+	background: none;
+	/* transform: rotate(270deg); */
+}
+
+
+/*options part */
+.options {
+	position: absolute;
+	transform: translateY(80px);
+	bottom: 0;
+	height: 50px;
+	width: 50%;
+	padding: 0 25px;
+	border-radius: 10px 10px 0 0;
+	transition: 0.5s;
+	box-shadow: 0.1px 4px 8px 5px rgba(0, 0, 0, 0.1);
+	background: rgba(255, 255, 255, 0.05);
+}
+
+.options .active_controller {
+	display: flex;
+	align-items: center;
+	width: 100%;
+	height: 100%;
+	justify-content: space-between;
+}
+
+.option {
+	display: none;
+}
+
+.option p {
+	font-weight: bold;
+	color: rgba(255, 255, 255, 0.5);
+}
+
+/*Range slider*/
+input[type="range"] {
+	width: 80%;
+	height: 5px;
+	cursor: pointer;
+	outline: none;
+}
+
+/* crop button */
+#crop
+{
+	display: none;
+	position: absolute;
+	bottom: 10px;
+	left: 20px;
+	outline: none;
+	border: none;
+	cursor: pointer;
+	border-radius: 5px;
+	transition: 0.5s;
+	padding: 10px;
+	color: #17202A;
+	background: orange;
+	transform: translateX(200px);
+	box-shadow: 0.1px 4px 8px 5px rgba(0, 0, 0, 0.1);
+}
+
+/*clear or reset btn */
+#clearAll {
+	position: absolute;
+	bottom: 10px;
+	right: 20px;
+	outline: none;
+	border: none;
+	cursor: pointer;
+	border-radius: 5px;
+	display: none;
+	align-items: center;
+	justify-content: center;
+	transition: 0.5s;
+	padding: 10px;
+	color: #17202A;
+	background: orange;
+	transform: translateX(200px);
+	box-shadow: 0.1px 4px 8px 5px rgba(0, 0, 0, 0.1);
+}
+
+#clearAll span {
+    margin-right: 10px;
+}
+
+/* tool tip */
+.main .Tools ul li .title p {
+	color: rgba(255, 255, 255, 0.8);
+	font-family: cursive;
+}
+.main .Tools ul li .title {
+	position: absolute;
+	left: 70px;
+	display: block;
+	background: rgba(255, 165, 0, 0.7);
+	width: 20%;
+	margin-top: 50px;
+	padding: 5px 10px;
+	transform: translateY(-15%) translateX(0px);
+	border-radius: 6px;
+	box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+	visibility: hidden;
+	opacity: 0;
+	transition: 0.5s;
+	color: rgba(255, 255, 255, 0.9);
+}
+
+#share_li .title {
+display: none;
+}
+
+.main .Tools ul li:hover .title {
+	transform: translateY(-15%) translateX(10px);
+	visibility: visible;
+	opacity: 1;
+}
+
+
+/* share */
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
+:root {
+	--white: #fff;
+	--icon-clr: #aaaaaa;
+	--facebook-clr: #3b5998;
+	--twitter-clr: #55acee;
+	--instagram-clr: #bc2a8d;
+	--linkedin-clr: #0072b1;
+}
+
+li .dd_list {
+	display: none;
+	background-color: var(--white);
+	position: absolute;
+	top: 45px;
+	left: 50%;
+	transform: translateX(-40%);
+  }
+
+  li .dd_list ul {
+	display: none;
+	width: auto;
+	background: var(--white);
+	margin: auto;
+	border-radius: 25px;
+	position: relative;
+	flex-direction: column;
+	width: 175px;
+	border-radius: 5px;
+  }
+  
+  li .dd_list ul li a {
+	display: flex;
+	height: 50px;
+	margin: 0 10px;
+	justify-content: center;
+	align-items: center;
+	color: var(--icon-clr);
+	width: 100%;
+	margin: 0;
+	text-decoration: none;
+  }
+  
+  li .dd_list ul li a span {
+	display: flex;
+  }
+  
+  li .dd_list ul li a span.icon {
+	width: 25px;
+	margin-right: 10px;
+  }
+  
+  li .dd_list ul li a span.text {
+	width: 125px;
+  }
+  
+  li .dd_list ul:before {
+	content: "";
+	position: absolute;
+	border: 8px solid;
+	top: -15px;
+	left: 50%;
+	transform: translateX(-50%);
+	border-color: transparent transparent var(--white) transparent;
+  }
+  
+  li .dd_list ul li a.facebook span.icon,
+  li .dd_list ul li a.facebook span.text:hover {
+	color: var(--facebook-clr);
+  }
+  
+  li .dd_list ul li a.twitter span.icon,
+  li .dd_list ul li a.twitter span.text:hover{
+	color: var(--twitter-clr);
+  }
+  
+  li .dd_list ul li a.instagram span.icon,
+  li .dd_list ul li a.instagram span.text:hover {
+	color: var(--instagram-clr);
+  }
+  
+  li .dd_list ul li a.linkedin span.icon,
+  li .dd_list ul li a.linkedin span.text:hover {
+	color: var(--linkedin-clr);
+  }
+  
+  li .dd_list ul {
+	display: flex;
+  }
+
+  #share_li{
+	position: relative;
+  }
